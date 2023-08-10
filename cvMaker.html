@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/a4f4bdf7c1.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .mainHeading {
+        background-color: black;
+        color: rgb(255, 255, 255);
+        padding: 6px;
+        text-transform: capitalize;
+      }
+      .minusIcon {
+        padding: 6px;
+        float: right;
+        background-color: black;
+        border-radius: 83px;
+      }
+      .iconPlus {
+        padding: 6px;
+        background-color: black;
+        border-radius: 83px;
+      }
+      .rightSection {
+        box-shadow: 0px 0px 9px 3px grey;
+        background-color: #fcfbfb;
+        /* border: 1px solid black; */
+        margin: 50px -30px 0px 0px;
+      }
+      .profile {
+        border-radius: 150px;
+        width: 120px;
+        margin: 20px;
+      }
+      #ulExp,
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        margin-bottom: 5px;
+        text-align: start;
+      }
+      #ulSkill {
+        list-style: circle;
+      }
+      .skillLi {
+        margin: 20px;
+      }
+      .phone-font,
+      .add-font,
+      .email-font {
+        float: left;
+        margin: 2px 14px 0px 13px;
+      }
+
+      .project {
+        position: relative;
+        display: inline;
+      }
+
+      @media print {
+        .form,
+        .print-btn {
+          display: none;
+        }
+      }
+    </style>
+
+    <title>CV Maker</title>
+  </head>
+  <body ondblclick="recover()">
+    <section
+      id="rightSection"
+      class="rightSection w-75 mx-auto container-fluid"
+    >
+      <div class="row">
+        <div
+          class="col-lg-4 text-center"
+          style="background-color: rgb(0, 0, 0); color: white"
+          ;
+        >
+          <img
+            src="https://www.seekpng.com/png/detail/41-410093_circled-user-icon-user-profile-icon-png.png"
+            class="img-fluid profile mx-auto"
+            id="display_image"
+            alt="Please select profile img"
+          />
+          <p id="name" class="name fw-bold fs-3 mx-auto"></p>
+          <hr color="white" class="w-50 mx-auto" />
+          <p id="des" class="fw-bold fs-5 mx-auto"></p>
+          <p id="about" class="text-start fs-5 fw-bold">ABOUT</p>
+          <i class="fa-solid fa-phone phone-font"></i>
+          <p
+            id="phNo"
+            class="text-start fw-light font-family-sans-serif fw-bold"
+            style="margin: 5px; font-size: smaller"
+          ></p>
+          <i class="fa-solid fa-envelope email-font"></i>
+          <p
+            id="e_mail"
+            class="text-start fw-light font-family-sans-serif fw-bold"
+            style="margin: 5px; font-size: smaller"
+          ></p>
+          <i class="fa-solid fa-car add-font"></i>
+          <p
+            id="add"
+            class="text-start fw-light font-family-sans-serif fw-bold"
+            style="margin: 5px; font-size: smaller"
+          ></p><br>
+          <p
+            id="summ"
+            class="text-start fw-light font-family-sans-serif fw-bold"
+            style="margin: 5px; font-size: smaller"
+          ></p>
+
+          <p id="project" class="text-start fw-bold fs-5 mt-4">SKILLS:</p>
+          <div id="inner_skills">
+            <ul id="ulSkill"></ul>
+          </div>
+        </div>
+
+        <div class="col-lg-8" style="background-color: rgb(254, 255, 255)">
+          <p id="achievements" class="text-start fw-bold fs-5 mt-4">
+            ACHIEVEMENTS
+          </p>
+          <hr color="black" />
+          <div id="inner_ach">
+            <ul id="ulAch"></ul>
+          </div>
+
+          <p id="experience" class="text-start fw-bold fs-5 mt-4">EDUCTION</p>
+          <hr color="black" />
+          <div id="inner_edu">
+            <ul id="ulEdu"></ul>
+          </div>
+
+          <p id="experience" class="text-start fw-bold fs-5 mt-4">EXPERIENCE</p>
+          <hr color="black" />
+          <div id="inner_exp">
+            <ul id="ulExp"></ul>
+          </div>
+
+          <!-- <p id="project" class="text-start fw-bold fs-5 mt-4 ">PROJECT</p> -->
+          <div id="container"></div>
+          <p
+            id="projects"
+            class="text-start fw-bold fs-5 p-0 m-0 project"
+            ondblclick="appear()"
+          >
+            PROJECT
+          </p>
+
+          <hr id="hrPro" class="" color="black" />
+          <div id="inner_pro">
+            <ul id="ulPro"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="d-grid gap-2 col-4 mx-auto">
+      <button
+        class="btn btn-dark m-5 print-btn"
+        style="background-color: black"
+        onclick="window.print()"
+        type="button"
+      >
+        Print
+      </button>
+    </div>
+    <section id="leftSection">
+      <form action="#" class="row g-3 needs-validation form" novalidate>
+        <!-- ABOUT section -->
+        <div class="container-fluid m-3 mt-5 mb-5 w-75 mx-auto">
+          <div class="container">
+            <div class="row mainHeading">
+              <div class="col">ABOUT SECTION</div>
+            </div>
+            <!-- row 1-->
+            <div class="row inputField">
+              <div class="col">
+                <label class="fw-bold mt-3">First Name</label>
+                <div class="input-group input-group-sm">
+                  <input
+                    type="text"
+                    id="firstName"
+                    class="form-control about"
+                    oninput="about()"
+                    aria-label="Small"
+                    autocomplete="off"
+                    required
+                    placeholder="e.g. First name"
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <label class="fw-bold mt-3">Middle Name</label>
+
+                <div class="input-group input-group-sm">
+                  <input
+                    type="text"
+                    id="middleName"
+                    class="form-control about"
+                    oninput="about()"
+                    aria-label="Small"
+                    autocomplete="off"
+                    placeholder="e.g. Middle name"
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <label class="fw-bold mt-3">Last Name</label>
+
+                <div class="input-group input-group-sm">
+                  <input
+                    type="text"
+                    id="lastName"
+                    class="form-control about"
+                    oninput="about()"
+                    aria-label="Small"
+                    autocomplete="off"
+                    required
+                    placeholder="e.g. Last name"
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!--row2 -->
+            <div class="row inputField">
+              <div class="col">
+                <label class="fw-bold mt-3">Profile Image</label>
+
+                <div class="input-group input-group-sm">
+                  <input
+                    type="file"
+                    id="upload_file"
+                    name="upload_file"
+                    class="form-control about"
+                    oninput="about()"
+                    accept="image/jpeg, image/png, image/jpg"
+                    aria-label="Small"
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <label class="fw-bold mt-3">Designation</label>
+
+                <div class="input-group input-group-sm">
+                  <input
+                    type="text"
+                    id="designation"
+                    class="form-control about"
+                    oninput="about()"
+                    autocomplete="off"
+                    required
+                    placeholder="e.g. Web Developer"
+                    aria-label="Small"
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <label class="fw-bold mt-3">Address</label>
+
+                <div class="input-group input-group-sm">
+                  <input
+                    type="text"
+                    id="address"
+                    class="form-control about"
+                    oninput="about()"
+                    aria-label="Small"
+                    autocomplete="off"
+                    required
+                    placeholder="e.g.Street-9..."
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+            </div>
+            <!--row 3 -->
+            <div class="row inputField">
+              <div class="col">
+                <label class="fw-bold mt-3">Email</label>
+
+                <div class="input-group input-group-sm">
+                  <input
+                    type="email"
+                    id="email"
+                    class="form-control about"
+                    oninput="about()"
+                    autocomplete="off"
+                    required
+                    aria-label="Small"
+                    placeholder="e.g. abc@gmail.com"
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <label class="fw-bold mt-3">Phone No:</label>
+
+                <div class="input-group input-group-sm">
+                  <input
+                    type="number"
+                    id="phoneNumber"
+                    autocomplete="off"
+                    required
+                    class="form-control about"
+                    oninput="about()"
+                    aria-label="Small"
+                    placeholder="e.g. +92.."
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <label class="fw-bold mt-3">Summary</label>
+
+                <div class="input-group input-group-sm">
+                  <input
+                    type="text"
+                    autocomplete="off"
+                    required
+                    id="summary"
+                    class="form-control about"
+                    oninput="about()"
+                    aria-label="Small"
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACHIEVEMENTS -->
+        <div class="container-fluid m-3 mt-5 mb-5 mainContainer w-75 mx-auto">
+          <div class="container">
+            <div class="row mainHeading">
+              <div class="col">ACHIEVEMENTS</div>
+            </div>
+            <!--row 1 -->
+            <div id="row">
+              <!--row 1 -->
+              <div class="row inputField">
+                <div class="col">
+                  <label class="fw-bold mt-3">Title</label>
+
+                  <div class="input-group input-group-sm">
+                    <input
+                      type="text"
+                      id="ach_title"
+                      autocomplete="off"
+                      required
+                      class="form-control"
+                      aria-label="Small"
+                      autocomplete="off"
+                      required
+                      placeholder="e.g. Best Practice Award"
+                      aria-describedby="inputGroup-sizing-sm"
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <label class="fw-bold mt-3">Description</label>
+
+                  <div class="input-group input-group-sm">
+                    <input
+                      type="text"
+                      id="ach_des"
+                      autocomplete="off"
+                      required
+                      class="form-control"
+                      aria-label="Small"
+                      autocomplete="off"
+                      required
+                      placeholder="e.g. The Best Practice Award a"
+                      aria-describedby="inputGroup-sizing-sm"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <i
+              class="fa-regular fa-plus iconPlus btn-outline-primary mt-3"
+              id="plus"
+              onclick="ach_plus()"
+            ></i>
+          </div>
+        </div>
+
+        <!-- ExperiEnce -->
+        <div class="container-fluid m-3 mt-5 mb-5 w-75 mx-auto">
+          <div class="container">
+            <div class="row mainHeading">
+              <div class="col">EXPERIENCE</div>
+            </div>
+
+            <!-- row 1-->
+            <div class="row inputField">
+              <div class="col">
+                <label class="fw-bold mt-3">Title</label>
+
+                <div class="input-group input-group-sm">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="comp_name"
+                    autocomplete="off"
+                    required
+                    aria-label="Small"
+                    placeholder="Company"
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <label class="fw-bold mt-3">Company / Organization</label>
+
+                <div class="input-group input-group-sm">
+                  <input
+                    type="text"
+                    id="comp_org"
+                    class="form-control"
+                    aria-label="Small"
+                    autocomplete="off"
+                    required
+                    placeholder=""
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <label class="fw-bold mt-3">Location</label>
+
+                <div class="input-group input-group-sm">
+                  <input
+                    type="text"
+                    id="comp_loc"
+                    autocomplete="off"
+                    required
+                    class="form-control"
+                    aria-label="Small"
+                    placeholder=""
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+            </div>
+            <!--row2 -->
+            <div class="row inputField">
+              <div class="col">
+                <label class="fw-bold mt-3">Start Date</label>
+
+                <div class="input-group input-group-sm">
+                  <input
+                    type="date"
+                    id="start_date"
+                    autocomplete="off"
+                    required
+                    class="form-control"
+                    aria-label="Small"
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <label class="fw-bold mt-3">End Date</label>
+
+                <div class="input-group input-group-sm">
+                  <input
+                    type="date"
+                    id="end_date"
+                    autocomplete="off"
+                    required
+                    class="form-control"
+                    placeholder="e.g. Web Developer"
+                    aria-label="Small"
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <label class="fw-bold mt-3">Description</label>
+
+                <div class="input-group input-group-sm">
+                  <input
+                    type="text"
+                    autocomplete="off"
+                    required
+                    id="comp_des"
+                    class="form-control"
+                    aria-label="Small"
+                    placeholder=""
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+            </div>
+            <i
+              class="fa-regular fa-plus iconPlus btn-outline-primary mt-3"
+              id="plus"
+              onclick="exp_plus()"
+            ></i>
+          </div>
+        </div>
+
+        <!-- Eduction -->
+        <div class="container-fluid m-3 mt-5 mb-5 w-75 mx-auto">
+          <div class="container">
+            <div class="row mainHeading">
+              <div class="col">EDUCTION</div>
+            </div>
+            <!-- row 1-->
+            <div class="row inputField">
+              <div class="col">
+                <label class="fw-bold mt-3">College</label>
+
+                <div class="input-group input-group-sm">
+                  <input
+                    type="text"
+                    id="col_name"
+                    autocomplete="off"
+                    required
+                    class="form-control"
+                    aria-label="Small"
+                    placeholder=""
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <label class="fw-bold mt-3">Degree</label>
+
+                <div class="input-group input-group-sm">
+                  <input
+                    type="text"
+                    id="deg_name"
+                    autocomplete="off"
+                    required
+                    class="form-control"
+                    aria-label="Small"
+                    placeholder=""
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <label class="fw-bold mt-3">City</label>
+
+                <div class="input-group input-group-sm">
+                  <input
+                    type="text"
+                    id="city_name"
+                    autocomplete="off"
+                    required
+                    class="form-control"
+                    aria-label="Small"
+                    placeholder=""
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+            </div>
+            <!--row 2-->
+            <div class="row inputField">
+              <div class="col">
+                <label class="fw-bold mt-3">Start Date</label>
+
+                <div class="input-group input-group-sm">
+                  <input
+                    type="date"
+                    id="start_clg"
+                    autocomplete="off"
+                    required
+                    class="form-control"
+                    aria-label="Small"
+                    placeholder=""
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <label class="fw-bold mt-3">End Date</label>
+
+                <div class="input-group input-group-sm">
+                  <input
+                    type="date"
+                    id="end_clg"
+                    autocomplete="off"
+                    required
+                    class="form-control"
+                    aria-label="Small"
+                    placeholder=""
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <i
+              class="fa-regular fa-plus iconPlus btn-outline-primary mt-3"
+              id="plus"
+              onclick="edu_plus()"
+            ></i>
+          </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="container-fluid m-3 mt-5 mb-5 w-75 mx-auto">
+          <div class="container">
+            <div class="row mainHeading">
+              <div class="col">PROJECTS</div>
+            </div>
+            <!--row 1-->
+            <div class="row inputField">
+              <div class="col">
+                <label class="fw-bold mt-3">Project</label>
+
+                <div class="input-group input-group-sm">
+                  <input
+                    type="text"
+                    id="pro_name"
+                    autocomplete="off"
+                    required
+                    class="form-control"
+                    aria-label="Small"
+                    placeholder=""
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <label class="fw-bold mt-3">Project Name</label>
+
+                <div class="input-group input-group-sm">
+                  <input
+                    type="text"
+                    id="pro_link"
+                    class="form-control"
+                    aria-label="Small"
+                    placeholder=""
+                    autocomplete="off"
+                    required
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <label class="fw-bold mt-3">Description</label>
+
+                <div class="input-group input-group-sm">
+                  <input
+                    type="text"
+                    id="pro_dec"
+                    class="form-control"
+                    aria-label="Small"
+                    placeholder=""
+                    autocomplete="off"
+                    required
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+            </div>
+            <i
+              class="fa-regular fa-plus iconPlus btn-outline-primary mt-3"
+              id="plus"
+              onclick="pro_plus()"
+            ></i>
+          </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="container-fluid m-3 mt-5 mb-5 w-75 mx-auto">
+          <div class="container">
+            <div class="row mainHeading">
+              <div class="col">Skills</div>
+            </div>
+
+            <!--row 1 -->
+            <div class="row inputField">
+              <div class="col">
+                <label class="fw-bold mt-3">Skills</label>
+
+                <div class="input-group input-group-sm">
+                  <input
+                    type="text"
+                    id="skill"
+                    class="form-control"
+                    aria-label="Small"
+                    placeholder=""
+                    autocomplete="off"
+                    required
+                    aria-describedby="inputGroup-sizing-sm"
+                  />
+                </div>
+              </div>
+            </div>
+            <i
+              class="fa-regular fa-plus iconPlus btn-outline-primary mt-3"
+              id="plus"
+              onclick="skill_plus()"
+            ></i>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <script>
+      var firstName;
+      var middleName;
+      var lastName;
+      var image;
+      var designation;
+      var address;
+      var phoneNumber;
+      var email;
+      var summary;
+      var achievements;
+      var description;
+      var companyName;
+      var companyOrganization;
+      var companyLocation;
+      var companyStart;
+      var companyEnd;
+      var companyDes;
+      var collegeName;
+      var degreeName;
+      var cityName;
+      var collegeStart;
+      var collegeEnd;
+      var projectName;
+      var projectLink;
+      var projectDescription;
+      var skills;
+
+      function about() {
+        firstName = document.getElementById("firstName").value;
+
+        middleName = document.getElementById("middleName").value;
+
+        lastName = document.getElementById("lastName").value;
+
+        designation = document.getElementById("designation").value;
+
+        phoneNumber = document.getElementById("phoneNumber").value;
+
+        email = document.getElementById("email").value;
+
+        address = document.getElementById("address").value;
+
+        summary = document.getElementById("summary").value;
+
+        document.getElementById("name").innerHTML =
+          firstName + " " + middleName + " " + lastName;
+
+        document.getElementById("des").innerHTML = designation + "<br><br>";
+
+        document.getElementById("about").innerHTML = "ABOUT US:";
+
+        document.getElementById("phNo").innerHTML = "" + " " + phoneNumber;
+
+        document.getElementById("e_mail").innerHTML = "" + " " + email;
+
+        document.getElementById("add").innerHTML = "" + " " + address;
+
+        document.getElementById("summ").innerHTML = "Summary :" + " " + summary;
+
+        // image
+        image = document.getElementById("upload_file").value;
+        var new_image = image.replace(/^.*\\/, "");
+        document.getElementById("display_image").src = new_image;
+      }
+
+      function ach_plus() {
+        achievements = document.getElementById("ach_title").value;
+
+        description = document.getElementById("ach_des").value;
+
+        document.getElementById("ulAch").innerHTML +=
+          "<li><b>" +
+          achievements +
+          "</b></li>" +
+          "<li>" +
+          description +
+          "</li><hr>";
+
+        document.getElementById("ach_title").value = "";
+
+        document.getElementById("ach_des").value = "";
+      }
+
+      function exp_plus() {
+        companyName = document.getElementById("comp_name").value;
+
+        companyOrganization = document.getElementById("comp_org").value;
+
+        companyLocation = document.getElementById("comp_loc").value;
+
+        companyStart = document.getElementById("start_date").value;
+
+        companyEnd = document.getElementById("end_date").value;
+
+        companyDes = document.getElementById("comp_des").value;
+
+        document.getElementById("ulExp").innerHTML +=
+          '<li class=""><b>' +
+          companyName +
+          "</b></li>" +
+          "<li><b>" +
+          companyOrganization +
+          "</b></li>" +
+          "<li>" +
+          companyLocation +
+          "</li>" +
+          '<li style="background-color: black;color: white;display: inline;padding: 4px;margin: 8px;border-radius: 7px;">' +
+          companyStart +
+          "</li>" +
+          '<li style="background-color: black;color: white;display: inline;padding: 4px;margin: 8px;border-radius: 7px;">' +
+          companyEnd +
+          "</li>" +
+          "<li>" +
+          companyDes +
+          "</li><hr>";
+
+        document.getElementById("comp_name").value = "";
+        document.getElementById("comp_org").value = "";
+        document.getElementById("comp_loc").value = "";
+        document.getElementById("start_date").value = "";
+        document.getElementById("end_date").value = "";
+        document.getElementById("comp_des").value = "";
+      }
+
+      function edu_plus() {
+        collegeName = document.getElementById("col_name").value;
+
+        degreeName = document.getElementById("deg_name").value;
+
+        cityName = document.getElementById("city_name").value;
+
+        collegeStart = document.getElementById("start_clg").value;
+
+        collegeEnd = document.getElementById("end_clg").value;
+
+        document.getElementById("ulEdu").innerHTML +=
+          '<li class=""><b>' +
+          collegeName +
+          "</b></li>" +
+          "<li><b>" +
+          degreeName +
+          "</b></li>" +
+          "<li>" +
+          cityName +
+          "</li>" +
+          '<li style="background-color: black;color: white;display: inline;padding: 4px;margin: 8px;border-radius: 7px;">' +
+          collegeStart +
+          "</li>" +
+          '<li style="background-color: black;color: white;display: inline;padding: 4px;margin: 8px;border-radius: 7px;">' +
+          collegeEnd +
+          "</li><hr>";
+
+        document.getElementById("col_name").value = "";
+        document.getElementById("deg_name").value = "";
+        document.getElementById("city_name").value = "";
+        document.getElementById("start_clg").value = "";
+        document.getElementById("end_clg").value = "";
+      }
+
+      function pro_plus() {
+        projectName = document.getElementById("pro_name").value;
+
+        projectLink = document.getElementById("pro_link").value;
+
+        projectDescription = document.getElementById("pro_dec").value;
+
+        document.getElementById("ulPro").innerHTML +=
+          "<li><b>" +
+          projectName +
+          "</b></li><li>" +
+          projectLink +
+          "</li><li>" +
+          projectDescription +
+          "</li>" +
+          "<hr>";
+
+        document.getElementById("pro_name").value = "";
+        document.getElementById("pro_link").value = "";
+        document.getElementById("pro_dec").value = "";
+      }
+
+      function skill_plus() {
+        skills = document.getElementById("skill").value;
+
+        document.getElementById("ulSkill").innerHTML +=
+          '<li class="test-start skillLi">' + skills + "</li>";
+
+        document.getElementById("skill").value = "";
+      }
+
+      function cancle() {
+        document.getElementById("container").style.display = "none";
+        document.getElementById("projects").style.display = "none";
+        document.getElementById("inner_pro").style.display = "none";
+        document.getElementById("ulPro").style.display = "none";
+        document.getElementById("hrPro").style.display = "none";
+      }
+      function recover() {
+        document.getElementById("container").style.display = "inline-block";
+        document.getElementById("projects").style.display = "inline-block";
+        document.getElementById("inner_pro").style.display = "inline-block";
+        document.getElementById("ulPro").style.display = "inline-block";
+        document.getElementById("hrPro").style.display = "inline-block";
+      }
+
+      function appear() {
+        document.getElementById("container").style.border = "1px dashed black";
+        document.getElementById("container").style.width = "108px";
+        document.getElementById("container").style.height = "44px";
+        document.getElementById("container").style.padding = "4px 9px 0px 8px";
+        document.getElementById("container").style.display = "inline-block";
+        document.getElementById("container").style.position = "absolute";
+
+        document.getElementById("container").innerHTML =
+          '<button id="x" onclick="cancle()"></button>';
+        document.getElementById("x").innerHTML = "x";
+
+        document.getElementById("x").style.position = "relative";
+        document.getElementById("x").style.float = "right";
+        document.getElementById("x").style.backgroundColor = "black";
+        document.getElementById("x").style.borderRadius = "100px";
+        document.getElementById("x").style.color = "white";
+        document.getElementById("x").style.top = "-16px";
+        document.getElementById("x").style.right = "-25px";
+      }
+    </script>
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function () {
+        "use strict";
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll(".needs-validation");
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms).forEach(function (form) {
+          form.addEventListener(
+            "submit",
+            function (event) {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+
+              form.classList.add("was-validated");
+            },
+            false
+          );
+        });
+      })();
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
